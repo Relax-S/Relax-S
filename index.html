@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax Shop - ريلاكس شوب</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* الأسلوب الأساسي */
+        body {
+            background: url('https://cityupload.io/2024/12/Anything_b6ede.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header img {
+            width: 24px;
+            height: 24px;
+        }
+        .center-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        .main-text {
+            font-size: 4rem;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        .main-text span {
+            color: purple;
+        }
+        .sub-text {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+        }
+        .buttons-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .join-button {
+            background-color: purple;
+            color: white;
+            border: none;
+        }
+        .join-button:hover {
+            background-color: #800080;
+        }
+        .bot-invite-button {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 1px solid white;
+        }
+        .bot-invite-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .login-button {
+            background-color: purple;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #800080;
+        }
+        .scroll-down {
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            margin-top: 40px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+        /* التعديلات الخاصة بتسجيل الدخول */
+        .logged-in {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logged-in img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        /* التعديلات الخاصة بالقائمة الجانبية */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 50px;
+            right: 0;
+            border-radius: 8px;
+            min-width: 200px;
+            text-align: left;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .dots img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- صورة الحساب (تظهر بعد تسجيل الدخول) -->
+        <div id="user-info" class="logged-in" style="display: none;">
+            <img id="user-avatar" src="" alt="User Avatar">
+            <span id="user-name">أهلاً بك</span>
+        </div>
+
+        <!-- رابط تسجيل الدخول مع Discord -->
+        <a href="https://discord.com/oauth2/authorize?client_id=1318184388487282769&response_type=code&redirect_uri=https%3A%2F%2Frelax-s.github.io%2FRelax-S%2F&scope=email+identify" class="login-button" id="login-button">
+            تسجيل دخول
+        </a>
+        
+        <!-- قائمة التلت نقاط -->
+        <div class="dots">
+            <img src="https://cityupload.io/2024/12/3-Dots.png" alt="Menu" id="menu-icon">
+            <div class="dropdown-content" id="dropdown-menu">
+                <a href="#bot-premium">بوت البروميم <span class="tag">Premium</span></a>
+                <a href="#shop-server">سيرفر الشوب وفروعنا</a>
+                <a href="#about-us">من نحن</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-text" id="center-text">
+        <h1 class="main-text">مرحبًا بك في <span>مكانك الامثل</span></h1>
+        <p class="sub-text">متجر Relax Shop يوفر لك الأمان والبائعين الموثوقين والمضمونين من قبل المتجر ونوفر لكم مميزات مرحبًا بكم</p>
+
+        <div class="buttons-container">
+            <a href="#" class="button join-button">انضم إلينا</a>
+            <a href="#" class="button bot-invite-button">دعوة البوت</a>
+        </div>
+    </div>
+
+    <!-- بوت البروميم -->
+    <div class="bot-premium" id="bot-premium">
+        <h2>بوت البروميم <span class="tag">Premium</span></h2>
+        <p>الحصول على بوت البروميم المميز مع جميع المزايا الخاصة.</p>
+    </div>
+
+    <!-- سيرفر الشوب وفروعنا -->
+    <div class="shop-server" id="shop-server">
+        <h2>سيرفر الشوب وفروعنا</h2>
+        <p>انضم إلى سيرفراتنا واكتشف فروعنا المتنوعة:</p>
+        <a href="https://discord.gg/T8MGzNDF" target="_blank" class="button bot-invite-button">رابط سيرفر الشوب</a>
+        <!-- هنا تقدر تضيف روابط تانية بنفس الشكل -->
+    </div>
+
+    <!-- من نحن -->
+    <div class="about-us" id="about-us">
+        <h2>من نحن</h2>
+        <p>نحن سيرفر مختص بالشوب، نقدم أفضل الأسعار ونوفر لكم جميع احتياجاتكم من سيرفرات الشوب في الديسكورد.</p>
+    </div>
+
+    <script>
+        // عند تحميل الصفحة يتم التعامل مع رابط OAuth2 لتسجيل الدخول
+        const loginButton = document.getElementById("login-button");
+        const userInfo = document.getElementById("user-info");
+        const userName = document.getElementById("user-name");
+        const userAvatar = document.getElementById("user-avatar");
+
+        // تأكد من أن المستخدم قد قام بتسجيل الدخول عبر Discord
+        if (localStorage.getItem('discord_user')) {
+            const user = JSON.parse(localStorage.getItem('discord_user'));
+            userName.textContent = `أهلاً، ${user.username}`;
+            userAvatar.src = user.avatar_url;
+            userInfo.style.display = 'flex';
+            loginButton.style.display = 'none';
+        }
+
+        // عند الضغط على زر تسجيل الدخول
+        loginButton.addEventListener('click', () => {
+            // هنا ستكون عملية OAuth2 مع Discord وتخزين البيانات في localStorage أو غيره
+            // بمجرد أن يحصل المستخدم على التصريح، قم بإظهار صورة الحساب
+            // يمكنك تنفيذ هذه العملية باستخدام مكتبات مثل `discord.js` في الخادم
+        });
+    </script>
+</body>
+</html>
